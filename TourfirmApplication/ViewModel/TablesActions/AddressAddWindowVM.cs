@@ -12,6 +12,8 @@ namespace TourfirmApplication.ViewModel.TablesActions
 {
     internal class AddressAddWindowVM : BaseViewModel
     {
+        string a;
+
         // Window openning method
         private void SetWindowPostionAndOpen(Window window)
         {

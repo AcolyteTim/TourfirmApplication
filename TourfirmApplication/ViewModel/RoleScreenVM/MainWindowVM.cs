@@ -142,36 +142,39 @@ namespace TourfirmApplication.ViewModel.RoleScreenVM
                         }
                     }
 
-                    Application.Current.Windows.OfType<MainWindow>().SingleOrDefault(x => x.IsVisible).Hide();
-                    switch (Convert.ToInt32(User.ut_id))
+                    if (User != null)
                     {
-                        case 0:
-                            {
-                                var adminWin = new AdministratorWindow();
-                                SetWindowPostionAndOpen(adminWin);
-                            }
-                            break;
+                        Application.Current.Windows.OfType<MainWindow>().SingleOrDefault(x => x.IsVisible).Hide();
+                        switch (Convert.ToInt32(User.ut_id))
+                        {
+                            case 0:
+                                {
+                                    var adminWin = new AdministratorWindow();
+                                    SetWindowPostionAndOpen(adminWin);
+                                }
+                                break;
 
-                        case 1:
-                            {
-                                var HRWin = new HRWindow();
-                                SetWindowPostionAndOpen(HRWin);
-                            }
-                            break;
+                            case 1:
+                                {
+                                    var HRWin = new HRWindow();
+                                    SetWindowPostionAndOpen(HRWin);
+                                }
+                                break;
 
-                        case 2:
-                            {
-                                var salesManagerWin = new SalesManagerWindow();
-                                SetWindowPostionAndOpen(salesManagerWin);
-                            }
-                            break;
+                            case 2:
+                                {
+                                    var salesManagerWin = new SalesManagerWindow();
+                                    SetWindowPostionAndOpen(salesManagerWin);
+                                }
+                                break;
 
-                        case 3:
-                            {
-                                var assistantSecretaryWin = new AssistantSecretaryWindow();
-                                SetWindowPostionAndOpen(assistantSecretaryWin);
-                            }
-                            break;
+                            case 3:
+                                {
+                                    var assistantSecretaryWin = new AssistantSecretaryWindow();
+                                    SetWindowPostionAndOpen(assistantSecretaryWin);
+                                }
+                                break;
+                        }
                     }
                     
                 }
