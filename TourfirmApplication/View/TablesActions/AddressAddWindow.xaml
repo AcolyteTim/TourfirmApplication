@@ -1,0 +1,24 @@
+﻿<Window x:Class="TourfirmApplication.View.TablesActions.AddressAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TourfirmApplication.View.TablesActions"
+        xmlns:vm="clr-namespace:TourfirmApplication.ViewModel.TablesActions" d:DataContext="{d:DesignInstance Type=vm:AddressAddWindowVM}"
+        mc:Ignorable="d"
+        Title="Add new address" Height="300" Width="400" FontSize="18">
+    <Window.DataContext>
+        <vm:AddressAddWindowVM/>
+    </Window.DataContext>
+    <Grid>
+        <StackPanel Margin=" 10">
+            <Label>New locality:</Label>
+            <TextBox Text="{Binding LocalityTB}"/>
+            <Label>New street:</Label>
+            <TextBox Text="{Binding StreetTB}"/>
+            <Label>New building:</Label>
+            <TextBox Text="{Binding BuildingTB}"/>
+        </StackPanel>
+        <Button VerticalAlignment="Bottom" Margin="10" Command="{Binding CreateAddress}">Create new address!</Button>
+    </Grid>
+</Window>

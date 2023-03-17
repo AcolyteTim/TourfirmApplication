@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90863D4B-2ACC-4653-A323-B43DBC2910FC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TourfirmApplication</RootNamespace>
+    <AssemblyName>TourfirmApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icons8-globe-48.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Model\Address_.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Captcha.cs" />
+    <Compile Include="Model\Client.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Country.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataWorker.cs" />
+    <Compile Include="Model\Data\AddressModel.cs" />
+    <Compile Include="Model\Data\ClientModel.cs" />
+    <Compile Include="Model\Data\Промежуточные не нужны вроде\ClientVisaModel.cs" />
+    <Compile Include="Model\Data\CountryModel.cs" />
+    <Compile Include="Model\Data\EmployeeModel.cs" />
+    <Compile Include="Model\Data\EmployeePositionModel.cs" />
+    <Compile Include="Model\Data\GoalModel.cs" />
+    <Compile Include="Model\Data\RouteModel.cs" />
+    <Compile Include="Model\Data\SaleModel.cs" />
+    <Compile Include="Model\Data\Промежуточные не нужны вроде\SaleTripModel.cs" />
+    <Compile Include="Model\Data\Промежуточные не нужны вроде\TripGoalModel.cs" />
+    <Compile Include="Model\Data\TripModel.cs" />
+    <Compile Include="Model\Employee.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Employee_position.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Goal.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RelayCommand.cs" />
+    <Compile Include="Model\Route_.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sale.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagrams_Result.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TourfirmModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourfirmModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TourfirmModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TourfirmModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourfirmModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Trip.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User_.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User_type.cs">
+      <DependentUpon>TourfirmModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Support\DataBaseConnetion.cs" />
+    <Compile Include="Support\HashFunction.cs" />
+    <Compile Include="Support\MyCommand.cs" />
+    <Compile Include="Support\NullImageConverter.cs" />
+    <Compile Include="ViewModel\RoleScreenVM\AdministratorWindowVM.cs" />
+    <Compile Include="ViewModel\RoleScreenVM\MainWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\AddressAddWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\AddressEditWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\ClientAddWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\ClientEditWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\CountryAddWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\EmployeeAddWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\EmployeePositionAddWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\MessageWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\RouteAddWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\SaleAddWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\TripAddWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\UserAddWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\UserTypeAddWindowVM.cs" />
+    <Compile Include="View\TablesActions\AddressAddWindow.xaml.cs">
+      <DependentUpon>AddressAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\AddressEditWindow.xaml.cs">
+      <DependentUpon>AddressEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\ClientAddVISAWindow.xaml.cs">
+      <DependentUpon>ClientAddVISAWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\ClientAddWindow.xaml.cs">
+      <DependentUpon>ClientAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\ClientEditWindow.xaml.cs">
+      <DependentUpon>ClientEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\CountryAddWindow.xaml.cs">
+      <DependentUpon>CountryAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\CountryEditWindow.xaml.cs">
+      <DependentUpon>CountryEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\EmployeeAddWindow.xaml.cs">
+      <DependentUpon>EmployeeAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\EmployeeEditWindow.xaml.cs">
+      <DependentUpon>EmployeeEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\EmployeePositionAddWindow.xaml.cs">
+      <DependentUpon>EmployeePositionAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\EmployeePositionEditWindow.xaml.cs">
+      <DependentUpon>EmployeePositionEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\MessageWindow.xaml.cs">
+      <DependentUpon>MessageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\RouteAddWindow.xaml.cs">
+      <DependentUpon>RouteAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\RouteEditWindow.xaml.cs">
+      <DependentUpon>RouteEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\SaleAddTripWindow.xaml.cs">
+      <DependentUpon>SaleAddTripWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\SaleAddWindow.xaml.cs">
+      <DependentUpon>SaleAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\SaleEditWindow.xaml.cs">
+      <DependentUpon>SaleEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\TripAddGoalWindow.xaml.cs">
+      <DependentUpon>TripAddGoalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\TripAddWindow.xaml.cs">
+      <DependentUpon>TripAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\TripEditWindow.xaml.cs">
+      <DependentUpon>TripEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\UserAddWindow.xaml.cs">
+      <DependentUpon>UserAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\UserEditWindow.xaml.cs">
+      <DependentUpon>UserEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\UserTypeAddWindow.xaml.cs">
+      <DependentUpon>UserTypeAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TablesActions\UserTypeEditWindow.xaml.cs">
+      <DependentUpon>UserTypeEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserScreens\AdministratorWindow.xaml.cs">
+      <DependentUpon>AdministratorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserScreens\AssistantSecretaryWindow.xaml.cs">
+      <DependentUpon>AssistantSecretaryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserScreens\HRWindow.xaml.cs">
+      <DependentUpon>HRWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserScreens\SalesManagerWindow.xaml.cs">
+      <DependentUpon>SalesManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModel\BaseVM.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\TablesActions\AddressAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\AddressEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\ClientAddVISAWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\ClientAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\ClientEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\CountryAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\CountryEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\EmployeeAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\EmployeeEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\EmployeePositionAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\EmployeePositionEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\MessageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\RouteAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\RouteEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\SaleAddTripWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\SaleAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\SaleEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\TripAddGoalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\TripAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\TripEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\UserAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\UserEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\UserTypeAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TablesActions\UserTypeEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserScreens\AdministratorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserScreens\AssistantSecretaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserScreens\HRWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserScreens\SalesManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\TourfirmModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TourfirmModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\TourfirmModel.edmx.diagram">
+      <DependentUpon>TourfirmModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\TourfirmModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TourfirmModel.edmx</DependentUpon>
+      <LastGenOutput>TourfirmModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\TourfirmModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TourfirmModel.edmx</DependentUpon>
+      <LastGenOutput>TourfirmModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\icons8-globe-48.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

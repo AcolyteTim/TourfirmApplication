@@ -1,0 +1,27 @@
+﻿<Window x:Class="TourfirmApplication.View.TablesActions.ClientEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TourfirmApplication.View.TablesActions"
+        xmlns:vm="clr-namespace:TourfirmApplication.ViewModel.TablesActions" d:DataContext="{d:DesignInstance Type=vm:ClientEditWindowVM}"
+        mc:Ignorable="d"
+        Title="Edit picked client" Height="500" Width="400" FontSize="18">
+    <Grid>
+        <StackPanel Margin=" 10">
+            <Label>ID:</Label>
+            <TextBox Text="{Binding ClientID}" IsReadOnly="True"/>
+            <Label>Surname:</Label>
+            <TextBox Text="{Binding SurnameTB}"/>
+            <Label>Name:</Label>
+            <TextBox Text="{Binding NameTB}"/>
+            <Label>Patronymic:</Label>
+            <TextBox Text="{Binding PatronymicTB}"/>
+            <Label>Address ID:</Label>
+            <TextBox Text="{Binding AddressID}"/>
+            <Label>Telephone number (only numbers):</Label>
+            <TextBox Text="{Binding TelephoneNum}"/>
+        </StackPanel>
+        <Button VerticalAlignment="Bottom" Margin="10" Command="{Binding EditPickedClientCommand}">Save client!</Button>
+    </Grid>
+</Window>

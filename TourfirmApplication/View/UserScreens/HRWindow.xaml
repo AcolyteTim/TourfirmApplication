@@ -1,0 +1,23 @@
+﻿<Window x:Class="TourfirmApplication.View.UserScreens.HRWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TourfirmApplication.View.UserScreens"
+        mc:Ignorable="d"
+        Title="TourfirmApplication - Head Recruiter" Height="700" Width="1280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" FontSize="56" Margin="40" HorizontalAlignment="Center" >Добро пожаловать, специалист по персоналу!</Label>
+        <StackPanel Grid.Row="1" Margin="200 0 200 5" VerticalAlignment="Center">
+            <Button x:Name="ToEmpPositionTableBtn" FontSize="24" Margin="9" >Открыть страницу должностей сотрудников</Button>
+            <Button x:Name="ToEmpTableBtn" FontSize="24" Margin="9" >Открыть страницу сотрудников</Button>
+            <Button x:Name="ToAddressTableBtn" FontSize="24" Margin="9" >Открыть страницу адресов</Button>
+        </StackPanel>
+    </Grid>
+</Window>
+

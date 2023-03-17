@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6b0acd10015a4b2db5008a91f89cffeb" Name="Diagram1" ZoomLevel="99">
+        <EntityTypeShape EntityType="TourfirmModel.Address_" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.Client" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.Country" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.Employee" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.Employee_position" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.Goal" Width="1.5" PointX="7.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.Route_" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.Sale" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.Trip" Width="1.5" PointX="9.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.User_" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourfirmModel.User_type" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="TourfirmModel.FK__Client__a_id__16CE6296" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.FK__Employee__a_id__1209AD79" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.FK__Sale__cl_id__1B9317B3" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.FK__Route___ac_id__0880433F" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.FK__Route___dc_id__078C1F06" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.FK__Employee__ep_id__13F1F5EB" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.FK__Sale__e_id__1A9EF37A" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.FK__Trip__r_id__0B5CAFEA" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.FK__User___ut_id__00DF2177" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.Client_visa" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.Sale_Trip" ManuallyRouted="false" />
+        <AssociationConnector Association="TourfirmModel.Trip_Goal" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

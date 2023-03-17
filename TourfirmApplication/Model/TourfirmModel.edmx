@@ -1,0 +1,991 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище TourfirmModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address_">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="a_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_locality" Type="nvarchar" MaxLength="127" />
+          <Property Name="a_street" Type="nvarchar" MaxLength="127" />
+          <Property Name="a_building" Type="nvarchar" MaxLength="63" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="cl_id" />
+          </Key>
+          <Property Name="cl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cl_surname" Type="nvarchar" MaxLength="63" Nullable="false" />
+          <Property Name="cl_name" Type="nvarchar" MaxLength="63" />
+          <Property Name="cl_patronymic" Type="nvarchar" MaxLength="63" />
+          <Property Name="a_id" Type="int" Nullable="false" />
+          <Property Name="cl_telNum" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="Client_visa">
+          <Key>
+            <PropertyRef Name="cl_id" />
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="cl_id" Type="int" Nullable="false" />
+          <Property Name="c_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_name" Type="nvarchar" MaxLength="127" />
+          <Property Name="c_visaPrice" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="e_id" />
+          </Key>
+          <Property Name="e_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="e_surname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="e_name" Type="nvarchar" MaxLength="63" />
+          <Property Name="e_patronymic" Type="nvarchar" MaxLength="63" />
+          <Property Name="a_id" Type="int" Nullable="false" />
+          <Property Name="e_telNum" Type="char" MaxLength="18" />
+          <Property Name="e_image" Type="varbinary(max)" />
+          <Property Name="ep_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee_position">
+          <Key>
+            <PropertyRef Name="ep_id" />
+          </Key>
+          <Property Name="ep_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ep_name" Type="nvarchar" MaxLength="127" />
+          <Property Name="ep_salary" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Goal">
+          <Key>
+            <PropertyRef Name="g_id" />
+          </Key>
+          <Property Name="g_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="g_name" Type="nvarchar" MaxLength="63" />
+        </EntityType>
+        <EntityType Name="Route_">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dc_id" Type="int" Nullable="false" />
+          <Property Name="ac_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="e_id" Type="int" Nullable="false" />
+          <Property Name="cl_id" Type="int" Nullable="false" />
+          <Property Name="s_tDate" Type="date" Nullable="false" />
+          <Property Name="s_cost" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Sale_Trip">
+          <Key>
+            <PropertyRef Name="s_id" />
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="s_id" Type="int" Nullable="false" />
+          <Property Name="t_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Trip">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="t_date" Type="date" />
+          <Property Name="r_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trip_Goal">
+          <Key>
+            <PropertyRef Name="t_id" />
+            <PropertyRef Name="g_id" />
+          </Key>
+          <Property Name="t_id" Type="int" Nullable="false" />
+          <Property Name="g_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_login" Type="nvarchar" MaxLength="63" Nullable="false" />
+          <Property Name="u_password" Type="nvarchar" MaxLength="63" Nullable="false" />
+          <Property Name="ut_id" Type="tinyint" Nullable="false" />
+          <Property Name="u_isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="User_type">
+          <Key>
+            <PropertyRef Name="ut_id" />
+          </Key>
+          <Property Name="ut_id" Type="tinyint" Nullable="false" />
+          <Property Name="ut_name" Type="nvarchar" MaxLength="63" />
+        </EntityType>
+        <Association Name="FK__Client__a_id__16CE6296">
+          <End Role="Address_" Type="Self.Address_" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address_">
+              <PropertyRef Name="a_id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="a_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_vi__cl_id__1F63A897">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Client_visa" Type="Self.Client_visa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="cl_id" />
+            </Principal>
+            <Dependent Role="Client_visa">
+              <PropertyRef Name="cl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client_vis__c_id__2057CCD0">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Client_visa" Type="Self.Client_visa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Client_visa">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__a_id__1209AD79">
+          <End Role="Address_" Type="Self.Address_" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address_">
+              <PropertyRef Name="a_id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="a_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__ep_id__13F1F5EB">
+          <End Role="Employee_position" Type="Self.Employee_position" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_position">
+              <PropertyRef Name="ep_id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ep_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Route___ac_id__0880433F">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Route_" Type="Self.Route_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Route_">
+              <PropertyRef Name="ac_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Route___dc_id__078C1F06">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Route_" Type="Self.Route_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Route_">
+              <PropertyRef Name="dc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale__cl_id__1B9317B3">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="cl_id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="cl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale__e_id__1A9EF37A">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="e_id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="e_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale_Trip__s_id__2704CA5F">
+          <End Role="Sale" Type="Self.Sale" Multiplicity="1" />
+          <End Role="Sale_Trip" Type="Self.Sale_Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="Sale_Trip">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale_Trip__t_id__27F8EE98">
+          <End Role="Trip" Type="Self.Trip" Multiplicity="1" />
+          <End Role="Sale_Trip" Type="Self.Sale_Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trip">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="Sale_Trip">
+              <PropertyRef Name="t_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trip__r_id__0B5CAFEA">
+          <End Role="Route_" Type="Self.Route_" Multiplicity="1" />
+          <End Role="Trip" Type="Self.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route_">
+              <PropertyRef Name="r_id" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="r_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trip_Goal__g_id__24285DB4">
+          <End Role="Goal" Type="Self.Goal" Multiplicity="1" />
+          <End Role="Trip_Goal" Type="Self.Trip_Goal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goal">
+              <PropertyRef Name="g_id" />
+            </Principal>
+            <Dependent Role="Trip_Goal">
+              <PropertyRef Name="g_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trip_Goal__t_id__2334397B">
+          <End Role="Trip" Type="Self.Trip" Multiplicity="1" />
+          <End Role="Trip_Goal" Type="Self.Trip_Goal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trip">
+              <PropertyRef Name="t_id" />
+            </Principal>
+            <Dependent Role="Trip_Goal">
+              <PropertyRef Name="t_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User___ut_id__00DF2177">
+          <End Role="User_type" Type="Self.User_type" Multiplicity="1" />
+          <End Role="User_" Type="Self.User_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_type">
+              <PropertyRef Name="ut_id" />
+            </Principal>
+            <Dependent Role="User_">
+              <PropertyRef Name="ut_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище TourfirmModelContainer">
+          <EntitySet Name="Address_" EntityType="Self.Address_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_visa" EntityType="Self.Client_visa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_position" EntityType="Self.Employee_position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goal" EntityType="Self.Goal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Route_" EntityType="Self.Route_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale_Trip" EntityType="Self.Sale_Trip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trip" EntityType="Self.Trip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trip_Goal" EntityType="Self.Trip_Goal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_" EntityType="Self.User_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_type" EntityType="Self.User_type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Client__a_id__16CE6296" Association="Self.FK__Client__a_id__16CE6296">
+            <End Role="Address_" EntitySet="Address_" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_vi__cl_id__1F63A897" Association="Self.FK__Client_vi__cl_id__1F63A897">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Client_visa" EntitySet="Client_visa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client_vis__c_id__2057CCD0" Association="Self.FK__Client_vis__c_id__2057CCD0">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Client_visa" EntitySet="Client_visa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__a_id__1209AD79" Association="Self.FK__Employee__a_id__1209AD79">
+            <End Role="Address_" EntitySet="Address_" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__ep_id__13F1F5EB" Association="Self.FK__Employee__ep_id__13F1F5EB">
+            <End Role="Employee_position" EntitySet="Employee_position" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Route___ac_id__0880433F" Association="Self.FK__Route___ac_id__0880433F">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Route_" EntitySet="Route_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Route___dc_id__078C1F06" Association="Self.FK__Route___dc_id__078C1F06">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Route_" EntitySet="Route_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale__cl_id__1B9317B3" Association="Self.FK__Sale__cl_id__1B9317B3">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale__e_id__1A9EF37A" Association="Self.FK__Sale__e_id__1A9EF37A">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale_Trip__s_id__2704CA5F" Association="Self.FK__Sale_Trip__s_id__2704CA5F">
+            <End Role="Sale" EntitySet="Sale" />
+            <End Role="Sale_Trip" EntitySet="Sale_Trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale_Trip__t_id__27F8EE98" Association="Self.FK__Sale_Trip__t_id__27F8EE98">
+            <End Role="Trip" EntitySet="Trip" />
+            <End Role="Sale_Trip" EntitySet="Sale_Trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trip__r_id__0B5CAFEA" Association="Self.FK__Trip__r_id__0B5CAFEA">
+            <End Role="Route_" EntitySet="Route_" />
+            <End Role="Trip" EntitySet="Trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trip_Goal__g_id__24285DB4" Association="Self.FK__Trip_Goal__g_id__24285DB4">
+            <End Role="Goal" EntitySet="Goal" />
+            <End Role="Trip_Goal" EntitySet="Trip_Goal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trip_Goal__t_id__2334397B" Association="Self.FK__Trip_Goal__t_id__2334397B">
+            <End Role="Trip" EntitySet="Trip" />
+            <End Role="Trip_Goal" EntitySet="Trip_Goal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User___ut_id__00DF2177" Association="Self.FK__User___ut_id__00DF2177">
+            <End Role="User_type" EntitySet="User_type" />
+            <End Role="User_" EntitySet="User_" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TourfirmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address_">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="a_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a_locality" Type="String" MaxLength="127" FixedLength="false" Unicode="true" />
+          <Property Name="a_street" Type="String" MaxLength="127" FixedLength="false" Unicode="true" />
+          <Property Name="a_building" Type="String" MaxLength="63" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Client__a_id__16CE6296" FromRole="Address_" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__a_id__1209AD79" FromRole="Address_" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="cl_id" />
+          </Key>
+          <Property Name="cl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cl_surname" Type="String" MaxLength="63" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cl_name" Type="String" MaxLength="63" FixedLength="false" Unicode="true" />
+          <Property Name="cl_patronymic" Type="String" MaxLength="63" FixedLength="false" Unicode="true" />
+          <Property Name="a_id" Type="Int32" Nullable="false" />
+          <Property Name="cl_telNum" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Address_" Relationship="Self.FK__Client__a_id__16CE6296" FromRole="Client" ToRole="Address_" />
+          <NavigationProperty Name="Sale" Relationship="Self.FK__Sale__cl_id__1B9317B3" FromRole="Client" ToRole="Sale" />
+          <NavigationProperty Name="Country" Relationship="Self.Client_visa" FromRole="Client" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_name" Type="String" MaxLength="127" FixedLength="false" Unicode="true" />
+          <Property Name="c_visaPrice" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Route_" Relationship="Self.FK__Route___ac_id__0880433F" FromRole="Country" ToRole="Route_" />
+          <NavigationProperty Name="Route_1" Relationship="Self.FK__Route___dc_id__078C1F06" FromRole="Country" ToRole="Route_" />
+          <NavigationProperty Name="Client" Relationship="Self.Client_visa" FromRole="Country" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="e_id" />
+          </Key>
+          <Property Name="e_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="e_surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="e_name" Type="String" MaxLength="63" FixedLength="false" Unicode="true" />
+          <Property Name="e_patronymic" Type="String" MaxLength="63" FixedLength="false" Unicode="true" />
+          <Property Name="a_id" Type="Int32" Nullable="false" />
+          <Property Name="e_telNum" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="e_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ep_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address_" Relationship="Self.FK__Employee__a_id__1209AD79" FromRole="Employee" ToRole="Address_" />
+          <NavigationProperty Name="Employee_position" Relationship="Self.FK__Employee__ep_id__13F1F5EB" FromRole="Employee" ToRole="Employee_position" />
+          <NavigationProperty Name="Sale" Relationship="Self.FK__Sale__e_id__1A9EF37A" FromRole="Employee" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="Employee_position">
+          <Key>
+            <PropertyRef Name="ep_id" />
+          </Key>
+          <Property Name="ep_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ep_name" Type="String" MaxLength="127" FixedLength="false" Unicode="true" />
+          <Property Name="ep_salary" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__ep_id__13F1F5EB" FromRole="Employee_position" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Goal">
+          <Key>
+            <PropertyRef Name="g_id" />
+          </Key>
+          <Property Name="g_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="g_name" Type="String" MaxLength="63" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Trip" Relationship="Self.Trip_Goal" FromRole="Goal" ToRole="Trip" />
+        </EntityType>
+        <EntityType Name="Route_">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dc_id" Type="Int32" Nullable="false" />
+          <Property Name="ac_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Route___ac_id__0880433F" FromRole="Route_" ToRole="Country" />
+          <NavigationProperty Name="Country1" Relationship="Self.FK__Route___dc_id__078C1F06" FromRole="Route_" ToRole="Country" />
+          <NavigationProperty Name="Trip" Relationship="Self.FK__Trip__r_id__0B5CAFEA" FromRole="Route_" ToRole="Trip" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="e_id" Type="Int32" Nullable="false" />
+          <Property Name="cl_id" Type="Int32" Nullable="false" />
+          <Property Name="s_tDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="s_cost" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Sale__cl_id__1B9317B3" FromRole="Sale" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Sale__e_id__1A9EF37A" FromRole="Sale" ToRole="Employee" />
+          <NavigationProperty Name="Trip" Relationship="Self.Sale_Trip" FromRole="Sale" ToRole="Trip" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Trip">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="t_price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="t_date" Type="DateTime" Precision="0" />
+          <Property Name="r_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Route_" Relationship="Self.FK__Trip__r_id__0B5CAFEA" FromRole="Trip" ToRole="Route_" />
+          <NavigationProperty Name="Sale" Relationship="Self.Sale_Trip" FromRole="Trip" ToRole="Sale" />
+          <NavigationProperty Name="Goal" Relationship="Self.Trip_Goal" FromRole="Trip" ToRole="Goal" />
+        </EntityType>
+        <EntityType Name="User_">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_login" Type="String" MaxLength="63" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_password" Type="String" MaxLength="63" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ut_id" Type="Byte" Nullable="false" />
+          <Property Name="u_isActive" Type="Boolean" />
+          <NavigationProperty Name="User_type" Relationship="Self.FK__User___ut_id__00DF2177" FromRole="User_" ToRole="User_type" />
+        </EntityType>
+        <EntityType Name="User_type">
+          <Key>
+            <PropertyRef Name="ut_id" />
+          </Key>
+          <Property Name="ut_id" Type="Byte" Nullable="false" />
+          <Property Name="ut_name" Type="String" MaxLength="63" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_" Relationship="Self.FK__User___ut_id__00DF2177" FromRole="User_type" ToRole="User_" />
+        </EntityType>
+        <Association Name="FK__Client__a_id__16CE6296">
+          <End Role="Address_" Type="Self.Address_" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address_">
+              <PropertyRef Name="a_id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="a_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__a_id__1209AD79">
+          <End Role="Address_" Type="Self.Address_" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address_">
+              <PropertyRef Name="a_id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="a_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale__cl_id__1B9317B3">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="cl_id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="cl_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Route___ac_id__0880433F">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Route_" Type="Self.Route_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Route_">
+              <PropertyRef Name="ac_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Route___dc_id__078C1F06">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Route_" Type="Self.Route_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="Route_">
+              <PropertyRef Name="dc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__ep_id__13F1F5EB">
+          <End Role="Employee_position" Type="Self.Employee_position" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_position">
+              <PropertyRef Name="ep_id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ep_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale__e_id__1A9EF37A">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="e_id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="e_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trip__r_id__0B5CAFEA">
+          <End Role="Route_" Type="Self.Route_" Multiplicity="1" />
+          <End Role="Trip" Type="Self.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route_">
+              <PropertyRef Name="r_id" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="r_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User___ut_id__00DF2177">
+          <End Role="User_type" Type="Self.User_type" Multiplicity="1" />
+          <End Role="User_" Type="Self.User_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_type">
+              <PropertyRef Name="ut_id" />
+            </Principal>
+            <Dependent Role="User_">
+              <PropertyRef Name="ut_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Client_visa">
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+        </Association>
+        <Association Name="Sale_Trip">
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <End Role="Trip" Type="Self.Trip" Multiplicity="*" />
+        </Association>
+        <Association Name="Trip_Goal">
+          <End Role="Goal" Type="Self.Goal" Multiplicity="*" />
+          <End Role="Trip" Type="Self.Trip" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TourfirmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address_" EntityType="Self.Address_" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Employee_position" EntityType="Self.Employee_position" />
+          <EntitySet Name="Goal" EntityType="Self.Goal" />
+          <EntitySet Name="Route_" EntityType="Self.Route_" />
+          <EntitySet Name="Sale" EntityType="Self.Sale" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Trip" EntityType="Self.Trip" />
+          <EntitySet Name="User_" EntityType="Self.User_" />
+          <EntitySet Name="User_type" EntityType="Self.User_type" />
+          <AssociationSet Name="FK__Client__a_id__16CE6296" Association="Self.FK__Client__a_id__16CE6296">
+            <End Role="Address_" EntitySet="Address_" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__a_id__1209AD79" Association="Self.FK__Employee__a_id__1209AD79">
+            <End Role="Address_" EntitySet="Address_" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale__cl_id__1B9317B3" Association="Self.FK__Sale__cl_id__1B9317B3">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Route___ac_id__0880433F" Association="Self.FK__Route___ac_id__0880433F">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Route_" EntitySet="Route_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Route___dc_id__078C1F06" Association="Self.FK__Route___dc_id__078C1F06">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Route_" EntitySet="Route_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__ep_id__13F1F5EB" Association="Self.FK__Employee__ep_id__13F1F5EB">
+            <End Role="Employee_position" EntitySet="Employee_position" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale__e_id__1A9EF37A" Association="Self.FK__Sale__e_id__1A9EF37A">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trip__r_id__0B5CAFEA" Association="Self.FK__Trip__r_id__0B5CAFEA">
+            <End Role="Route_" EntitySet="Route_" />
+            <End Role="Trip" EntitySet="Trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User___ut_id__00DF2177" Association="Self.FK__User___ut_id__00DF2177">
+            <End Role="User_type" EntitySet="User_type" />
+            <End Role="User_" EntitySet="User_" />
+          </AssociationSet>
+          <AssociationSet Name="Client_visa" Association="Self.Client_visa">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Country" EntitySet="Country" />
+          </AssociationSet>
+          <AssociationSet Name="Sale_Trip" Association="Self.Sale_Trip">
+            <End Role="Sale" EntitySet="Sale" />
+            <End Role="Trip" EntitySet="Trip" />
+          </AssociationSet>
+          <AssociationSet Name="Trip_Goal" Association="Self.Trip_Goal">
+            <End Role="Goal" EntitySet="Goal" />
+            <End Role="Trip" EntitySet="Trip" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TourfirmModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TourfirmModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TourfirmModelContainer" CdmEntityContainer="TourfirmEntities">
+          <EntitySetMapping Name="Address_">
+            <EntityTypeMapping TypeName="TourfirmModel.Address_">
+              <MappingFragment StoreEntitySet="Address_">
+                <ScalarProperty Name="a_id" ColumnName="a_id" />
+                <ScalarProperty Name="a_locality" ColumnName="a_locality" />
+                <ScalarProperty Name="a_street" ColumnName="a_street" />
+                <ScalarProperty Name="a_building" ColumnName="a_building" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="TourfirmModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="cl_id" ColumnName="cl_id" />
+                <ScalarProperty Name="cl_surname" ColumnName="cl_surname" />
+                <ScalarProperty Name="cl_name" ColumnName="cl_name" />
+                <ScalarProperty Name="cl_patronymic" ColumnName="cl_patronymic" />
+                <ScalarProperty Name="a_id" ColumnName="a_id" />
+                <ScalarProperty Name="cl_telNum" ColumnName="cl_telNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="TourfirmModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="c_visaPrice" ColumnName="c_visaPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="TourfirmModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="e_id" ColumnName="e_id" />
+                <ScalarProperty Name="e_surname" ColumnName="e_surname" />
+                <ScalarProperty Name="e_name" ColumnName="e_name" />
+                <ScalarProperty Name="e_patronymic" ColumnName="e_patronymic" />
+                <ScalarProperty Name="a_id" ColumnName="a_id" />
+                <ScalarProperty Name="e_telNum" ColumnName="e_telNum" />
+                <ScalarProperty Name="e_image" ColumnName="e_image" />
+                <ScalarProperty Name="ep_id" ColumnName="ep_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_position">
+            <EntityTypeMapping TypeName="TourfirmModel.Employee_position">
+              <MappingFragment StoreEntitySet="Employee_position">
+                <ScalarProperty Name="ep_id" ColumnName="ep_id" />
+                <ScalarProperty Name="ep_name" ColumnName="ep_name" />
+                <ScalarProperty Name="ep_salary" ColumnName="ep_salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goal">
+            <EntityTypeMapping TypeName="TourfirmModel.Goal">
+              <MappingFragment StoreEntitySet="Goal">
+                <ScalarProperty Name="g_id" ColumnName="g_id" />
+                <ScalarProperty Name="g_name" ColumnName="g_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Route_">
+            <EntityTypeMapping TypeName="TourfirmModel.Route_">
+              <MappingFragment StoreEntitySet="Route_">
+                <ScalarProperty Name="r_id" ColumnName="r_id" />
+                <ScalarProperty Name="dc_id" ColumnName="dc_id" />
+                <ScalarProperty Name="ac_id" ColumnName="ac_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sale">
+            <EntityTypeMapping TypeName="TourfirmModel.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="e_id" ColumnName="e_id" />
+                <ScalarProperty Name="cl_id" ColumnName="cl_id" />
+                <ScalarProperty Name="s_tDate" ColumnName="s_tDate" />
+                <ScalarProperty Name="s_cost" ColumnName="s_cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TourfirmModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trip">
+            <EntityTypeMapping TypeName="TourfirmModel.Trip">
+              <MappingFragment StoreEntitySet="Trip">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="t_price" ColumnName="t_price" />
+                <ScalarProperty Name="t_date" ColumnName="t_date" />
+                <ScalarProperty Name="r_id" ColumnName="r_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_">
+            <EntityTypeMapping TypeName="TourfirmModel.User_">
+              <MappingFragment StoreEntitySet="User_">
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="u_login" ColumnName="u_login" />
+                <ScalarProperty Name="u_password" ColumnName="u_password" />
+                <ScalarProperty Name="ut_id" ColumnName="ut_id" />
+                <ScalarProperty Name="u_isActive" ColumnName="u_isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_type">
+            <EntityTypeMapping TypeName="TourfirmModel.User_type">
+              <MappingFragment StoreEntitySet="User_type">
+                <ScalarProperty Name="ut_id" ColumnName="ut_id" />
+                <ScalarProperty Name="ut_name" ColumnName="ut_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Client_visa" TypeName="TourfirmModel.Client_visa" StoreEntitySet="Client_visa">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="cl_id" ColumnName="cl_id" />
+            </EndProperty>
+            <EndProperty Name="Country">
+              <ScalarProperty Name="c_id" ColumnName="c_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Sale_Trip" TypeName="TourfirmModel.Sale_Trip" StoreEntitySet="Sale_Trip">
+            <EndProperty Name="Sale">
+              <ScalarProperty Name="s_id" ColumnName="s_id" />
+            </EndProperty>
+            <EndProperty Name="Trip">
+              <ScalarProperty Name="t_id" ColumnName="t_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Trip_Goal" TypeName="TourfirmModel.Trip_Goal" StoreEntitySet="Trip_Goal">
+            <EndProperty Name="Goal">
+              <ScalarProperty Name="g_id" ColumnName="g_id" />
+            </EndProperty>
+            <EndProperty Name="Trip">
+              <ScalarProperty Name="t_id" ColumnName="t_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище TourfirmModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище TourfirmModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище TourfirmModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище TourfirmModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TourfirmModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище TourfirmModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TourfirmModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище TourfirmModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище TourfirmModel.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
