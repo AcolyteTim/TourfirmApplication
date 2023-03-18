@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -596,6 +598,98 @@ namespace TourfirmApplication.ViewModel.RoleScreenVM
                 return clientDelete ?? new RelayCommand(obj =>
                 {
                     DeleteСlient();
+                }
+                );
+            }
+        }
+
+        private void OpenClientVISAAddWindow()
+        {
+            if (SelectedClientRow != null)
+            {
+                var clientAddVISAWindow = new ClientAddVISAWindow(SelectedClientRow);
+                SetWindowPostionAndOpen(clientAddVISAWindow);
+                ClientVISAList = DataWorker.GetAllClientVISAs(Convert.ToInt32(ClientIDTextBoxText));
+            }
+        }
+        private RelayCommand clientVISAAdd;
+        public RelayCommand ClientVISAAdd
+        {
+            get
+            {
+                return clientVISAAdd ?? new RelayCommand(obj =>
+                {
+                    OpenClientVISAAddWindow();
+                }
+                );
+            }
+        }
+
+        private void RemoveСlientVISA()
+        {
+            if (SelectedClientVISARow != null && SelectedClientRow != null)
+            {
+                var msgBoxResult = MessageBox.Show("Do you really want to remove picked item?", "Removing picked VISA", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+                if (msgBoxResult == MessageBoxResult.OK)
+                {
+                    var convertedClientRow = Convert.ToInt32(SelectedClientRow.cl_id);
+                    DataWorker.DeleteVISAFromClient(convertedClientRow, SelectedClientVISARow.c_id);
+                    ClientVISAList = DataWorker.GetAllClientVISAs(Convert.ToInt32(ClientIDTextBoxText));
+                }
+            }
+        }
+        private RelayCommand clientVISARemove;
+        public RelayCommand ClientVISARemove
+        {
+            get
+            {
+                return clientVISARemove ?? new RelayCommand(obj =>
+                {
+                    RemoveСlientVISA();
+                }
+                );
+            }
+        }
+
+        //Employee BUTTONS
+        void ChangePicture()
+        {
+            if (SelectedEmployeeRow != null)
+            {
+                try
+                {
+                    var dialog = new OpenFileDialog
+                    {
+                        Filter = "Images (*.png, *.jpeg, *.jpg)|*.png;*.jpeg;*.jpg",
+                        Multiselect = false,
+                        CheckFileExists = true,
+                        CheckPathExists = true,
+                        ValidateNames = true
+                    };
+
+                    if (dialog.ShowDialog() != true)
+                    {
+                        return;
+                    }
+
+                    var imagePath = dialog.FileName;
+                    var imageData = File.ReadAllBytes(imagePath);
+
+                    DataWorker.EditEmployeeImage(Convert.ToInt32(SelectedEmployeeRow.e_id), imageData);
+                    EmployeeList = DataWorker.GetAllEmployee();
+                }
+                catch (Exception ex) { }
+            }
+        }
+
+        private RelayCommand addImageToEmployee;
+        public RelayCommand AddImageToEmployee
+        {
+            get
+            {
+                return addImageToEmployee ?? new RelayCommand(obj =>
+                {
+                    ChangePicture();
                 }
                 );
             }

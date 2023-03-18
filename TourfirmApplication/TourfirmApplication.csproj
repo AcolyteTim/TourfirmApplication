@@ -155,6 +155,7 @@
     <Compile Include="ViewModel\RoleScreenVM\MainWindowVM.cs" />
     <Compile Include="ViewModel\TablesActions\AddressAddWindowVM.cs" />
     <Compile Include="ViewModel\TablesActions\AddressEditWindowVM.cs" />
+    <Compile Include="ViewModel\TablesActions\ClientAddVISAWindowVM.cs" />
     <Compile Include="ViewModel\TablesActions\ClientAddWindowVM.cs" />
     <Compile Include="ViewModel\TablesActions\ClientEditWindowVM.cs" />
     <Compile Include="ViewModel\TablesActions\CountryAddWindowVM.cs" />

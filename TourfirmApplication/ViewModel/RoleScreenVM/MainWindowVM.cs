@@ -144,6 +144,7 @@ namespace TourfirmApplication.ViewModel.RoleScreenVM
 
                     if (User != null)
                     {
+                        User.u_isActive = true;
                         Application.Current.Windows.OfType<MainWindow>().SingleOrDefault(x => x.IsVisible).Hide();
                         switch (Convert.ToInt32(User.ut_id))
                         {

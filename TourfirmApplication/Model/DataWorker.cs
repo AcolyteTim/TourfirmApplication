@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.Remoting.Contexts;
 using System.Security.AccessControl;
 using System.Text;
@@ -541,6 +542,35 @@ namespace TourfirmApplication.Model
                         employee.ep_id = empPosititon;
                         db.SaveChanges();
                         return "Item has been edited!";
+                    }
+                    else
+                    {   // if there no such item
+                        return "There is no such item!";
+                    }
+                }
+            }
+            catch (Exception ex) //unexpected errors and etc.
+            {
+                return ex.Message;
+            }
+        }
+
+        public static String EditEmployeeImage(int ID, byte[] img)
+        {
+            try
+            {
+                using (TourfirmEntities db = new TourfirmEntities())
+                {
+                    // Checking is there such item
+                    bool isExist = db.Employee.Any(el => el.e_id == ID);
+
+                    if (isExist)
+                    {
+                        // Data editing
+                        Employee employee = db.Employee.FirstOrDefault(el => el.e_id == ID);
+                        employee.e_image = img;
+                        db.SaveChanges();
+                        return "Image has been edited!";
                     }
                     else
                     {   // if there no such item
@@ -1206,7 +1236,7 @@ namespace TourfirmApplication.Model
 
                     if (!isExist)
                     {
-                        // Creating a new Employee
+                        // Creating a new user type
                         User_type newUserType = new User_type { ut_name = name };
                         db.User_type.Add(newUserType);
                         db.SaveChanges();

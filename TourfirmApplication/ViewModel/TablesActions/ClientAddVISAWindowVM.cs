@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ using TourfirmApplication.View.TablesActions;
 
 namespace TourfirmApplication.ViewModel.TablesActions
 {
-    internal class AddressAddWindowVM : BaseViewModel
+    internal class ClientAddVISAWindowVM : BaseViewModel
     {
         // Window openning method
         private void SetWindowPostionAndOpen(Window window)
@@ -26,67 +25,60 @@ namespace TourfirmApplication.ViewModel.TablesActions
             SetWindowPostionAndOpen(messageWindow);
         }
 
-
-        private string localityTB;
-        public string LocalityTB
+        public ClientAddVISAWindowVM(Client client)
         {
-            get => localityTB;
+            ClientID = client.cl_id;
+        }
+
+        int clientID;
+        public int ClientID
+        {
+            get { return clientID; }
             set
             {
-                localityTB = value;
-                OnPropertyChanged("LocalityTB");
+                clientID = value;
+                OnPropertyChanged(nameof(clientID));
             }
         }
 
-        private string streetTB;
-        public string StreetTB
+        string countryID;
+        public string CountryID
         {
-            get => streetTB;
+            get { return countryID; }
             set
             {
-                streetTB = value;
-                OnPropertyChanged("StreetTB");
+                countryID = value;
+                OnPropertyChanged(nameof(CountryID));
             }
         }
 
-        private string buildingTB;
-        public string BuildingTB
-        {
-            get => buildingTB;
-            set
-            {
-                buildingTB = value;
-                OnPropertyChanged("BuildingTB");
-            }
-        }
-
-        public void CreateNewAddress(string locality, string street, string building)
+        public void AddVISAToClient()
         {
             try
             {
-                if (locality != null && street != null && building != null)
+                if (CountryID != string.Empty)
                 {
-                    OpenMessageWindow(DataWorker.CreateAddress(locality, street, building));
+                    var convertedCountryID = Convert.ToInt32(CountryID);
+                    OpenMessageWindow(DataWorker.AddVISAForClient(ClientID,convertedCountryID));
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 OpenMessageWindow(ex.Message);
             }
         }
 
-        private RelayCommand createAddress;
-        public RelayCommand CreateAddress
+        private RelayCommand doCommand;
+        public RelayCommand DoCommand
         {
             get
             {
-                return createAddress ?? new RelayCommand(obj =>
+                return doCommand ?? new RelayCommand(obj =>
                 {
-                    CreateNewAddress(LocalityTB,StreetTB,BuildingTB);
+                    AddVISAToClient();
                 }
                 );
             }
         }
-
     }
 }

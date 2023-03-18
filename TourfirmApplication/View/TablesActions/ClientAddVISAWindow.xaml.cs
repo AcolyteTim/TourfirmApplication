@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TourfirmApplication.Model;
+using TourfirmApplication.ViewModel.TablesActions;
 
 namespace TourfirmApplication.View.TablesActions
 {
@@ -19,9 +21,10 @@ namespace TourfirmApplication.View.TablesActions
     /// </summary>
     public partial class ClientAddVISAWindow : Window
     {
-        public ClientAddVISAWindow()
+        public ClientAddVISAWindow(Client client)
         {
             InitializeComponent();
+            DataContext = new ClientAddVISAWindowVM(client);
         }
     }
 }

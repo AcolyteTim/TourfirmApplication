@@ -4,20 +4,104 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TourfirmApplication.View.UserScreens"
+        xmlns:vm="clr-namespace:TourfirmApplication.ViewModel.RoleScreenVM" d:DataContext="{d:DesignInstance Type=vm:AdministratorWindowVM}"
         mc:Ignorable="d"
-        Title="TourfirmApplication - Head Recruiter" Height="700" Width="1280">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+        Closed="Window_Closed"
+        Title="TourfirmApplication - Administrator" Height="700" Width="1280" FontSize="18" MinWidth="900" MinHeight="450">
+    <Window.DataContext>
+        <vm:AdministratorWindowVM/>
+    </Window.DataContext>
 
-        <Label Grid.Row="0" FontSize="56" Margin="40" HorizontalAlignment="Center" >Добро пожаловать, специалист по персоналу!</Label>
-        <StackPanel Grid.Row="1" Margin="200 0 200 5" VerticalAlignment="Center">
-            <Button x:Name="ToEmpPositionTableBtn" FontSize="24" Margin="9" >Открыть страницу должностей сотрудников</Button>
-            <Button x:Name="ToEmpTableBtn" FontSize="24" Margin="9" >Открыть страницу сотрудников</Button>
-            <Button x:Name="ToAddressTableBtn" FontSize="24" Margin="9" >Открыть страницу адресов</Button>
-        </StackPanel>
+    <Grid>
+        <TabControl>
+            <TabItem x:Name="EmpPositionTab" Header="Positions" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid VerticalAlignment="Top">
+                        <DataGrid ItemsSource="{Binding EmpPositionList}" MaxHeight="350" SelectedItem="{Binding SelectedEmpPositionRow}"
+                          IsReadOnly="True" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding ep_id}"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding ep_name}"/>
+                                <DataGridTextColumn Header="Salary" Binding="{Binding ep_salary}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">EDIT</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">DELETE</Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="EmpTab" Header="Employees">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid VerticalAlignment="Top">
+                        <DataGrid ItemsSource="{Binding EmployeeList}" MaxHeight="350" SelectedItem="{Binding SelectedEmployeeRow}"
+                          IsReadOnly="True" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding e_id}"/>
+                                <DataGridTextColumn Header="Surname" Binding="{Binding e_surname}"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding e_name}"/>
+                                <DataGridTextColumn Header="Patronymic" Binding="{Binding e_patronymic}"/>
+                                <DataGridTextColumn Header="Address ID" Binding="{Binding a_id}"/>
+                                <DataGridTextColumn Header="Telephone number" Binding="{Binding e_telNum}"/>
+                                <DataGridTextColumn Header="Position" Binding="{Binding ep_id}"/>
+                                <DataGridTemplateColumn Header="Photo">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding e_image, Converter={StaticResource NullImageConverter}}"
+                                   MaxWidth="150" MaxHeight="150"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">EDIT</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">DELETE</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding AddImageToEmployee}">ADD IMAGE</Button>
+                    </StackPanel>
+                </Grid>
+
+
+            </TabItem>
+
+            <TabItem x:Name="AddressTab" Header="Address" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid VerticalAlignment="Top">
+                        <DataGrid ItemsSource="{Binding AddressList}" MaxHeight="350"
+                          IsReadOnly="True" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto"
+                          SelectedItem="{Binding SelectedAddressRow}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding a_id}"/>
+                                <DataGridTextColumn Header="Locality" Binding="{Binding a_locality}"/>
+                                <DataGridTextColumn Header="Street" Binding="{Binding a_street}"/>
+                                <DataGridTextColumn Header="Building" Binding="{Binding a_building}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding AddressAdd}">ADD</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding AddressEdit}">EDIT</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding AddressDelete}">DELETE</Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
-

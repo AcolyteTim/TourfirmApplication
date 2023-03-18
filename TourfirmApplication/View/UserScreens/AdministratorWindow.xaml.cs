@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TourfirmApplication.ViewModel.RoleScreenVM;
+using TourfirmApplication.Model;
 
 namespace TourfirmApplication.View.UserScreens
 {
@@ -27,6 +28,11 @@ namespace TourfirmApplication.View.UserScreens
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            using (TourfirmEntities db = new TourfirmEntities())
+            {
+                User_ user = db.User_.FirstOrDefault(el => el.u_id == 1);
+                user.u_isActive = false;
+            }
             Application.Current.Windows.OfType<MainWindow>().SingleOrDefault(x => !x.IsVisible).ShowDialog();
         }
     }

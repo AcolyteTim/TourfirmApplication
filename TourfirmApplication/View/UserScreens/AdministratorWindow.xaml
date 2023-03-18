@@ -31,9 +31,9 @@
                         </DataGrid>
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">ADD</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">EDIT</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">DELETE</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">EDIT</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">DELETE</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -67,9 +67,10 @@
                         </DataGrid>
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">ADD</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">EDIT</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">DELETE</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">EDIT</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">DELETE</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding AddImageToEmployee}">ADD IMAGE</Button>
                     </StackPanel>
                 </Grid>
 
@@ -152,8 +153,8 @@
                             <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding ClientAdd}">ADD</Button>
                             <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding ClientEdit}">EDIT</Button>
                             <Button Height="50" Width="100" Margin="5 0 50 0" Command="{Binding ClientDelete}">DELETE</Button>
-                            <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding}">ADD VISA</Button>
-                            <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding}">REMOVE VISA</Button>
+                            <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding ClientVISAAdd}">ADD VISA</Button>
+                            <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding ClientVISARemove}">REMOVE VISA</Button>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -197,11 +198,11 @@
                         </DataGrid>
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">ADD</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">EDIT</Button>
-                        <Button Height="50" Width="100" Margin="5 0 50 0" Command="{Binding}">DELETE</Button>
-                        <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding}">ADD TRIP</Button>
-                        <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding}">REMOVE TRIP</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">EDIT</Button>
+                        <Button Height="50" Width="100" Margin="5 0 50 0" Command="{Binding}" IsEnabled="False">DELETE</Button>
+                        <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD TRIP</Button>
+                        <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">REMOVE TRIP</Button>
                     </StackPanel>
                     
                 </Grid>
@@ -243,11 +244,11 @@
                         </DataGrid>
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">ADD</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">EDIT</Button>
-                        <Button Height="50" Width="100" Margin="5 0 50 0" Command="{Binding}">DELETE</Button>
-                        <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding}">ADD GOAL</Button>
-                        <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding}">REMOVE GOAL</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">EDIT</Button>
+                        <Button Height="50" Width="100" Margin="5 0 50 0" Command="{Binding}" IsEnabled="False">DELETE</Button>
+                        <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD GOAL</Button>
+                        <Button Height="50" Width="130" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">REMOVE GOAL</Button>
                     </StackPanel>
                 </Grid>
 
@@ -271,9 +272,9 @@
                         </DataGrid>
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">ADD</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">EDIT</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">DELETE</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">EDIT</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">DELETE</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -295,9 +296,9 @@
                         </DataGrid>
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">ADD</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">EDIT</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">DELETE</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">EDIT</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">DELETE</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -316,14 +317,14 @@
                                 <DataGridTextColumn Header="Login" Binding="{Binding u_login}"/>
                                 <DataGridTextColumn Header="Password" Binding="{Binding u_password}"/>
                                 <DataGridTextColumn Header="User type ID" Binding="{Binding ut_id}"/>
-                                <!--<DataGridTextColumn Header="Is active now" Binding="{Binding u_isActive}"/>-->
+                                <DataGridTextColumn Header="Is active now" Binding="{Binding u_isActive}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">ADD</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">EDIT</Button>
-                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}">DELETE</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">ADD</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">EDIT</Button>
+                        <Button Height="50" Width="100" Margin="5 0 5 0" Command="{Binding}" IsEnabled="False">DELETE</Button>
                     </StackPanel>
                 </Grid>
             </TabItem>

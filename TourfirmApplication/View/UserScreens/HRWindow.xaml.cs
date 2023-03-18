@@ -23,5 +23,10 @@ namespace TourfirmApplication.View.UserScreens
         {
             InitializeComponent();
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Windows.OfType<MainWindow>().SingleOrDefault(x => !x.IsVisible).ShowDialog();
+        }
     }
 }
