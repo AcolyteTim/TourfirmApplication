@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:TourfirmApplication.ViewModel.RoleScreenVM" d:DataContext="{d:DesignInstance Type=vm:AdministratorWindowVM}"
         mc:Ignorable="d"
         Closed="Window_Closed"
-        Title="TourfirmApplication - Administrator" Height="700" Width="1280" FontSize="18" MinWidth="900" MinHeight="450">
+        Title="TourfirmApplication - Sales Manager" Height="700" Width="1280" FontSize="18" MinWidth="900" MinHeight="450">
     <Window.DataContext>
         <vm:AdministratorWindowVM/>
     </Window.DataContext>
